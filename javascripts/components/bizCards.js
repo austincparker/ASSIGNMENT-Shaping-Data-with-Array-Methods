@@ -93,6 +93,21 @@ const showManuCards = () => {
       renderToDom('#manuBiz', domString);
 };
 
+const showAgents = () => {
+    const agents = businesses.map(business => {
+        return business.purchasingAgent
+    })
+    
+    console.table(agents)
 
+    let domString = '';
+    
+    agents.forEach(agent => {
+      domString += `<h2>${agent.nameFirst} ${agent.nameLast}</h2>`;
+      domString += "<hr/>";
+    });
+    
+    renderToDom('#agentContainer', domString);
+}
 
-export { showCards, showNYBiz, showManuCards };
+export { showCards, showNYBiz, showManuCards, showAgents };
