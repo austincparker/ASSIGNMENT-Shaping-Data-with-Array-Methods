@@ -60,6 +60,39 @@ const showNYBiz = () => {
       renderToDom('#newYorkBiz', domString);
 }
 
+const showManuCards = () => {
+    const manuBusinesses = businesses.filter((business) => {
+        let isManu = false;
+      
+        if (business.companyIndustry === "Manufacturing") {
+          isManu = true;
+        }
+      
+        return isManu;
+      });
+      let domString = '<h1>Manufacturing Businesses</h1>'
+    
+      manuBusinesses.forEach(business => {
+          domString += `
+            <h2>${business.companyName}</h2>
+                <section>
+                ${business.addressFullStreet}
+                </section>
+                <section>
+                ${business.addressCity}
+                </section>
+                <section>
+                ${business['addressStateCode']}
+                </section>
+                <section>
+                ${business['addressZipCode']}
+                </section>
+          `
+           
+      })
+      renderToDom('#manuBiz', domString);
+};
 
 
-export { showCards, showNYBiz };
+
+export { showCards, showNYBiz, showManuCards };
