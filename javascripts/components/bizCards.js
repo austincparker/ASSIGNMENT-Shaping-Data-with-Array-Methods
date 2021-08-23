@@ -98,9 +98,7 @@ const showAgents = () => {
         return business.purchasingAgent
     })
     
-    console.table(agents)
-
-    let domString = '';
+    let domString = '<h1>Purchasing Agents</h1>';
     
     agents.forEach(agent => {
       domString += `<h2>${agent.nameFirst} ${agent.nameLast}</h2>`;
