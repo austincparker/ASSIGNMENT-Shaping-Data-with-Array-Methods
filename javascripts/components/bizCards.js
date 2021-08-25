@@ -3,9 +3,23 @@ import businesses from '../helpers/data/data.js'
 
 const showCards = () => {
     let domString = '<h1>All Businesses</h1>';
+
+    // Total Order Reduce Method Exercise
+    
     businesses.forEach(business => {
+      let totalOrders = business.orders.reduce(
+        (currentTotal, nextValue) => currentTotal += nextValue,
+        0
+      );
+      // ^^ (reduce method) replaces vv 
+      // let totalOrders = 0;
+      // business.orders.forEach(order => totalOrders += order)
+
         domString += `
-        <h2>${business.companyName}</h2>
+        <h2>
+        ${business.companyName}
+        ($${totalOrders})
+        </h2>
         <section>
           ${business.addressFullStreet}
         </section>
@@ -60,6 +74,8 @@ const showNYBiz = () => {
       renderToDom('#newYorkBiz', domString);
 }
 
+// Manufacturing Filter Exercise
+
 const showManuCards = () => {
     const manuBusinesses = businesses.filter((business) => {
         let isManu = false;
@@ -92,6 +108,8 @@ const showManuCards = () => {
       })
       renderToDom('#manuBiz', domString);
 };
+
+// Agents Map Exercise
 
 const showAgents = () => {
     const agents = businesses.map(business => {
